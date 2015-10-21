@@ -1,0 +1,19 @@
+.sceditor-button-twemoji div {
+  background:url('http://twemoji.maxcdn.com/16x16/1f600.png') !important;
+}
+
+/* drop down */
+.sceditor-twemoji {
+  width:200px;
+  height:250px;
+  overflow-y:auto;
+}
+
+/* icons */
+.sceditor-twemoji img {
+  cursor:pointer;
+  margin:3px;
+}
+.sceditor-twemoji img:hover {
+  opacity:0.7;
+}
