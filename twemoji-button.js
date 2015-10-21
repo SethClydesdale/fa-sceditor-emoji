@@ -21,21 +21,9 @@
           
           if (!_twemojiConfig.element) {
             _twemojiConfig.element = document.createElement('DIV');
-      
             _twemojiConfig.element.innerHTML = twemoji.parse(_twemojiConfig.emojis, {
-              size : _twemojiConfig.size,
-              attributes : function() {
-                return {
-                  style : 'display:none;'
-                }
-              }
+              size : _twemojiConfig.size
             });
-          
-            // load images one at a time so it doesn't hold up the browser
-            $('img', _twemojiConfig.element).load(function() {
-              $(this).next().show();
-            });
-            _twemojiConfig.element.firstChild.style.display = '';
           }
           
           $(_twemojiConfig.element).click(function(e) {
