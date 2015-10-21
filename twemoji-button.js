@@ -22,8 +22,41 @@
           if (!_twemojiConfig.element) {
             _twemojiConfig.element = document.createElement('DIV');
             _twemojiConfig.element.innerHTML = twemoji.parse(_twemojiConfig.emojis, {
-              size : _twemojiConfig.size
+              size : _twemojiConfig.size,
+              attributes : function() {
+                return {
+                  style : 'display:none;'
+                };
+              }
             });
+            
+            // load handler for images to lighten the deployment of emoji
+            // it displays and loads one image at a time rather all at once which can make the browser unresponsive
+            _twemojiConfig.image = {
+              collection : $('img', _twemojiConfig.element),
+              index : 0,
+              timeout : [0, 6000], // timeout after 6000 attempts on 1 image
+              
+              load : window.setInterval(function() {
+                if (_twemojiConfig.image.collection[_twemojiConfig.image.index].complete) {
+                  _twemojiConfig.image.index++;
+                  
+                  if (_twemojiConfig.image.collection[_twemojiConfig.image.index]) {
+                    _twemojiConfig.image.collection[_twemojiConfig.image.index].style.display = '';
+                    _twemojiConfig.image.timeout[0] = 0;
+                  } else {
+                    window.clearInterval(_twemojiConfig.image.load);
+                    _twemojiConfig.image.load = 'COMPLETE';
+                  }
+                  
+                } else if (++_twemojiConfig.image.timeout[0] > _twemojiConfig.image.timeout[1]) {
+                  window.clearInterval(_twemojiConfig.image.load);
+                  _twemojiConfig.image.load = 'ERROR';
+                }
+              }, 10)
+            };
+            
+            _twemojiConfig.image.collection[_twemojiConfig.image.index].style.display = ''; // start loading
           }
           
           $(_twemojiConfig.element).click(function(e) {
