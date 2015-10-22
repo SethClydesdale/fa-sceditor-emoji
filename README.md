@@ -3,9 +3,13 @@
 This small plugin allows for the use of [Twitter Emojis](https://github.com/twitter/twemoji) in the SCEditor on Forumactif forums.
 
 **Jump to :**
+- [Demo](#demo)
 - [Installation](#installation)
 - [Configuration](#configuration)
-- [Demo](#demo)
+
+## Demo
+
+You can find a demo on my forumactif test forum [here](http://forumbeta.forumactif.com/post?t=13&mode=reply). Just click the Emoji button (![button](http://twemoji.maxcdn.com/16x16/1f600.png)) in the editor toolbar !
 
 ## Installation
 
@@ -34,7 +38,3 @@ At the top of the script is an object called ``config`` which contains a few set
 ``async_load`` : This option is for performance. When set to ``true`` it will load one emoji after the other without making the browser wait. Setting this option to ``false`` may reduce performance, but it will load all emojis at once. However, this can make the browser unresponsive for a few seconds if there is a large amount of images.
 
 For extended technical details and customization, please see the github page for twitter emojis : https://github.com/twitter/twemoji
-
-## Demo
-
-You can find a demo on my forumactif test forum [here](http://forumbeta.forumactif.com/post?t=13&mode=reply). Just click the Emoji button (![button](http://twemoji.maxcdn.com/16x16/1f600.png)) in the editor toolbar !
