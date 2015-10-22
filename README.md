@@ -22,7 +22,7 @@ Once you're finished, you should now be able to use Emojis in your messages on y
 
 At the top of the script is an object called ``config`` which contains a few settings :
 
-``emoji_size`` : Defines the default size of the emojis ; 16x16 by default. The sizes available are 16, 32, or 72. You can change this for larger or smaller emoji icons.
+``emoji_size`` : Defines the default size of the emojis ; 16x16 by default. The sizes available are 16, 36, or 72. You can change this for larger or smaller emoji icons.
 
 ``emoji_list`` : Defines a list of twitter emojis in JavaScript Escaped Unicode Code Points. In this string you can edit the position of emojis, or remove ones you don't want. You can use this converter for converting characters and javascript escapes : https://r12a.github.io/apps/conversion/
 
