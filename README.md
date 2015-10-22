@@ -2,6 +2,10 @@
 
 This small plugin allows for the use of [Twitter Emojis](https://github.com/twitter/twemoji) in the SCEditor on Forumactif forums.
 
+**Jump to :**
+- [Installation](#installation)
+- [Configuration](#configuration)
+
 ## Installation
 
 To instsall this plugin go to Admin Panel > Modules > JavaScript codes management and create a new script with the following settings.
