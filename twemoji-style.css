@@ -4,7 +4,7 @@
 
 /* drop down */
 .sceditor-twemoji {
-  width:200px;
+  width:230px;
   height:250px;
   overflow-y:auto;
 }
@@ -12,7 +12,7 @@
 /* icons */
 .sceditor-twemoji img {
   cursor:pointer;
-  margin:3px;
+  padding:3px;
 }
 .sceditor-twemoji img:hover {
   opacity:0.7;
