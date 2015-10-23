@@ -81,7 +81,7 @@
         exec : function(c) {
           var e = this;
           $.sceditor.command.get('twemoji').dropDown(e, c, function(icon) {
-            e.insert('&nbsp;[img]' + icon + '[/img]&nbsp;', '', true, true, true);
+            e.insert('[img]' + icon + '[/img]&nbsp;', '', true, true, true);
           });
         },
     
@@ -89,7 +89,7 @@
         txtExec : function(c) {
           var e = this;
           $.sceditor.command.get('twemoji').dropDown(e, c, function(icon) {
-            e.insert(' [img]' + icon + '[/img] ', '', true, true, true);
+            e.insert('[img]' + icon + '[/img] ', '', true, true, true);
           });
         },
     
