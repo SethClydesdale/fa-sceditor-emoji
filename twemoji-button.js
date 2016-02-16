@@ -71,7 +71,7 @@ jQuery(function ($) {
             customStyle.left = callerLeft;
             customStyle.right = 'auto';
         }
-        return customStyle;
+        $wrap.css(customStyle);
     }
 
     // create sceditor button and drop down
@@ -132,11 +132,11 @@ jQuery(function ($) {
 
             }
 
-            $wrap.css(updatePosition($wrap, caller));
+            updatePosition($wrap, caller);
             if (!addResizeEvent) {
                 addResizeEvent = true;
                 $win.resize(function () {
-                    $wrap.css(updatePosition($wrap, caller));
+                    updatePosition($wrap, caller);
                 });
             }
 
