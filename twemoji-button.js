@@ -1,106 +1,167 @@
-(function() {
-  var config = {
-    button_title : 'Emojis',
-    auto_close : false,
-    async_load : true,
-    
-    emoji_size : 16, // 16, 36, or 72
-    emoji_list : '\uD83D\uDE00 \uD83D\uDE01 \uD83D\uDE02 \uD83D\uDE03 \uD83D\uDE04 \uD83D\uDE05 \uD83D\uDE06 \uD83D\uDE09 \uD83D\uDE0A \uD83D\uDE0B \uD83D\uDE0E \uD83D\uDE0D \uD83D\uDE18 \uD83D\uDE17 \uD83D\uDE19 \uD83D\uDE1A \u263A\uFE0F \uD83D\uDE07 \uD83D\uDE10 \uD83D\uDE11 \uD83D\uDE36 \uD83D\uDE0F \uD83D\uDE23 \uD83D\uDE25 \uD83D\uDE2E \uD83D\uDE2F \uD83D\uDE2A \uD83D\uDE2B \uD83D\uDE34 \uD83D\uDE0C \uD83D\uDE1B \uD83D\uDE1C \uD83D\uDE1D \uD83D\uDE12 \uD83D\uDE13 \uD83D\uDE14 \uD83D\uDE15 \uD83D\uDE16 \uD83D\uDE37 \uD83D\uDE32 \uD83D\uDE1E \uD83D\uDE1F \uD83D\uDE24 \uD83D\uDE22 \uD83D\uDE2D \uD83D\uDE26 \uD83D\uDE27 \uD83D\uDE28 \uD83D\uDE29 \uD83D\uDE2C \uD83D\uDE30 \uD83D\uDE31 \uD83D\uDE33 \uD83D\uDE35 \uD83D\uDE21 \uD83D\uDE20 \uD83D\uDC7F \uD83D\uDE08 \uD83D\uDC66 \uD83D\uDC67 \uD83D\uDC68 \uD83D\uDC69 \uD83D\uDC74 \uD83D\uDC75 \uD83D\uDC76 \uD83D\uDC71 \uD83D\uDC6E \uD83D\uDC72 \uD83D\uDC73 \uD83D\uDC77 \uD83D\uDC78 \uD83D\uDC82 \uD83C\uDF85 \uD83D\uDC7C \uD83D\uDC6F \uD83D\uDC86 \uD83D\uDC87 \uD83D\uDC70 \uD83D\uDE4D \uD83D\uDE4E \uD83D\uDE45 \uD83D\uDE46 \uD83D\uDC81 \uD83D\uDE4B \uD83D\uDE47 \uD83D\uDE4C \uD83D\uDE4F \uD83D\uDC64 \uD83D\uDC65 \uD83D\uDEB6 \uD83C\uDFC3 \uD83D\uDC83 \uD83D\uDC8F \uD83D\uDC91 \uD83D\uDC6A \uD83D\uDC6B \uD83D\uDC6C \uD83D\uDC6D \uD83D\uDCAA \uD83D\uDC48 \uD83D\uDC49 \u261D\uFE0F \uD83D\uDC46 \uD83D\uDC47 \u270C\uFE0F \u270A \u270B \uD83D\uDC4A \uD83D\uDC4C \uD83D\uDC4D \uD83D\uDC4E \uD83D\uDC4B \uD83D\uDC4F \uD83D\uDC50 \uD83D\uDC85 \uD83D\uDC63 \uD83D\uDC40 \uD83D\uDC42 \uD83D\uDC43 \uD83D\uDC45 \uD83D\uDC44 \uD83D\uDC8B \uD83D\uDC98 \u2764\uFE0F \uD83D\uDC93 \uD83D\uDC94 \uD83D\uDC95 \uD83D\uDC96 \uD83D\uDC97 \uD83D\uDC99 \uD83D\uDC9A \uD83D\uDC9B \uD83D\uDC9C \uD83D\uDC9D \uD83D\uDC9E \uD83D\uDC9F \uD83D\uDC8C \uD83D\uDCA7 \uD83D\uDCA4 \uD83D\uDCA2 \uD83D\uDCA3 \uD83D\uDCA5 \uD83D\uDCA6 \uD83D\uDCA8 \uD83D\uDCAB \uD83D\uDCAC \uD83D\uDCAD \uD83D\uDC53 \uD83D\uDC54 \uD83D\uDC55 \uD83D\uDC56 \uD83D\uDC57 \uD83D\uDC58 \uD83D\uDC59 \uD83D\uDC5A \uD83D\uDC5B \uD83D\uDC5C \uD83D\uDC5D \uD83C\uDF92 \uD83D\uDC5E \uD83D\uDC5F \uD83D\uDC60 \uD83D\uDC61 \uD83D\uDC62 \uD83D\uDC51 \uD83D\uDC52 \uD83C\uDFA9 \uD83D\uDC84 \uD83D\uDC8D \uD83D\uDC8E \uD83D\uDC79 \uD83D\uDC7A \uD83D\uDC7B \uD83D\uDC80 \uD83D\uDC7D \uD83D\uDC7E \uD83D\uDCA9 \uD83D\uDC35 \uD83D\uDE48 \uD83D\uDE49 \uD83D\uDE4A \uD83D\uDC12 \uD83D\uDC36 \uD83D\uDC15 \uD83D\uDC29 \uD83D\uDC3A \uD83D\uDC31 \uD83D\uDE38 \uD83D\uDE39 \uD83D\uDE3A \uD83D\uDE3B \uD83D\uDE3C \uD83D\uDE3D \uD83D\uDE3E \uD83D\uDE3F \uD83D\uDE40 \uD83D\uDC08 \uD83D\uDC2F \uD83D\uDC05 \uD83D\uDC06 \uD83D\uDC34 \uD83D\uDC0E \uD83D\uDC2E \uD83D\uDC02 \uD83D\uDC03 \uD83D\uDC04 \uD83D\uDC37 \uD83D\uDC16 \uD83D\uDC17 \uD83D\uDC3D \uD83D\uDC0F \uD83D\uDC11 \uD83D\uDC10 \uD83D\uDC2A \uD83D\uDC2B \uD83D\uDC18 \uD83D\uDC2D \uD83D\uDC01 \uD83D\uDC00 \uD83D\uDC39 \uD83D\uDC30 \uD83D\uDC07 \uD83D\uDC3B \uD83D\uDC28 \uD83D\uDC3C \uD83D\uDC3E \uD83D\uDC14 \uD83D\uDC13 \uD83D\uDC23 \uD83D\uDC24 \uD83D\uDC25 \uD83D\uDC26 \uD83D\uDC27 \uD83D\uDC38 \uD83D\uDC0A \uD83D\uDC22 \uD83D\uDC0D \uD83D\uDC32 \uD83D\uDC09 \uD83D\uDC33 \uD83D\uDC0B \uD83D\uDC2C \uD83D\uDC1F \uD83D\uDC20 \uD83D\uDC21 \uD83D\uDC19 \uD83D\uDC1A \uD83D\uDC0C \uD83D\uDC1B \uD83D\uDC1C \uD83D\uDC1D \uD83D\uDC1E \uD83D\uDC90 \uD83C\uDF38 \uD83D\uDCAE \uD83C\uDF39 \uD83C\uDF3A \uD83C\uDF3B \uD83C\uDF3C \uD83C\uDF37 \uD83C\uDF31 \uD83C\uDF32 \uD83C\uDF33 \uD83C\uDF34 \uD83C\uDF35 \uD83C\uDF3E \uD83C\uDF3F \uD83C\uDF40 \uD83C\uDF41 \uD83C\uDF42 \uD83C\uDF43 \uD83C\uDF47 \uD83C\uDF48 \uD83C\uDF49 \uD83C\uDF4A \uD83C\uDF4B \uD83C\uDF4C \uD83C\uDF4D \uD83C\uDF4E \uD83C\uDF4F \uD83C\uDF50 \uD83C\uDF51 \uD83C\uDF52 \uD83C\uDF53 \uD83C\uDF45 \uD83C\uDF46 \uD83C\uDF3D \uD83C\uDF44 \uD83C\uDF30 \uD83C\uDF5E \uD83C\uDF56 \uD83C\uDF57 \uD83C\uDF54 \uD83C\uDF5F \uD83C\uDF55 \uD83C\uDF72 \uD83C\uDF71 \uD83C\uDF58 \uD83C\uDF59 \uD83C\uDF5A \uD83C\uDF5B \uD83C\uDF5C \uD83C\uDF5D \uD83C\uDF60 \uD83C\uDF62 \uD83C\uDF63 \uD83C\uDF64 \uD83C\uDF65 \uD83C\uDF61 \uD83C\uDF66 \uD83C\uDF67 \uD83C\uDF68 \uD83C\uDF69 \uD83C\uDF6A \uD83C\uDF82 \uD83C\uDF70 \uD83C\uDF6B \uD83C\uDF6C \uD83C\uDF6D \uD83C\uDF6E \uD83C\uDF6F \uD83C\uDF7C \u2615 \uD83C\uDF75 \uD83C\uDF76 \uD83C\uDF77 \uD83C\uDF78 \uD83C\uDF79 \uD83C\uDF7A \uD83C\uDF7B \uD83C\uDF74 \uD83C\uDF73 \uD83C\uDF0D \uD83C\uDF0E \uD83C\uDF0F \uD83C\uDF10 \uD83C\uDF0B \uD83D\uDDFB \uD83C\uDFE0 \uD83C\uDFE1 \u26EA \uD83C\uDFE2 \uD83C\uDFE3 \uD83C\uDFE4 \uD83C\uDFE5 \uD83C\uDFE6 \uD83C\uDFE8 \uD83C\uDFE9 \uD83C\uDFEA \uD83C\uDFEB \uD83C\uDFEC \uD83C\uDFED \uD83C\uDFEF \uD83C\uDFF0 \uD83D\uDC92 \uD83D\uDDFC \uD83D\uDDFD \uD83D\uDDFE \u26F2 \u26FA \uD83C\uDF01 \uD83C\uDF03 \uD83C\uDF04 \uD83C\uDF05 \uD83C\uDF06 \uD83C\uDF07 \uD83C\uDF09 \uD83C\uDF0A \u2668\uFE0F \uD83D\uDDFF \uD83C\uDF0C \uD83C\uDFA0 \uD83C\uDFA1 \uD83C\uDFA2 \uD83D\uDC88 \uD83C\uDFAA \uD83C\uDFAD \uD83C\uDFA8 \uD83C\uDFB0 \uD83D\uDE82 \uD83D\uDE83 \uD83D\uDE84 \uD83D\uDE85 \uD83D\uDE86 \uD83D\uDE87 \uD83D\uDE88 \uD83D\uDE89 \uD83D\uDE8A \uD83D\uDE9D \uD83D\uDE9E \uD83D\uDE8B \uD83D\uDE8C \uD83D\uDE8D \uD83D\uDE8E \uD83D\uDE8F \uD83D\uDE90 \uD83D\uDE91 \uD83D\uDE92 \uD83D\uDE93 \uD83D\uDE94 \uD83D\uDE95 \uD83D\uDE96 \uD83D\uDE97 \uD83D\uDE98 \uD83D\uDE99 \uD83D\uDE9A \uD83D\uDE9B \uD83D\uDE9C \uD83D\uDEB2 \uD83D\uDEB3 \u26FD \uD83D\uDEA8 \u2693 \uD83D\uDD31 \u26F5 \uD83D\uDEA3 \uD83D\uDEA4 \uD83D\uDEA2 \u2708\uFE0F \uD83D\uDCBA \uD83D\uDE81 \uD83D\uDE9F \uD83D\uDEA0 \uD83D\uDEA1 \uD83D\uDE80 \uD83C\uDFE7 \uD83D\uDEAE \uD83D\uDEA5 \uD83D\uDEA6 \uD83D\uDEA7 \uD83D\uDEAB \uD83D\uDEAD \uD83D\uDEAF \uD83D\uDEB0 \uD83D\uDEB1 \uD83D\uDEB7 \uD83D\uDEB8 \u267F \uD83D\uDEB9 \uD83D\uDEBA \uD83D\uDEBB \uD83D\uDEBC \uD83D\uDEBE \uD83D\uDEC2 \uD83D\uDEC3 \uD83D\uDEC4 \uD83D\uDEC5 \u26A0\uFE0F \u26D4 \uD83D\uDEAA \uD83D\uDEBD \uD83D\uDEBF \uD83D\uDEC0 \uD83D\uDEC1 \u231B \u23F3 \u231A \u23F0 \uD83D\uDD5B \uD83D\uDD67 \uD83D\uDD50 \uD83D\uDD5C \uD83D\uDD51 \uD83D\uDD5D \uD83D\uDD52 \uD83D\uDD5E \uD83D\uDD53 \uD83D\uDD5F \uD83D\uDD54 \uD83D\uDD60 \uD83D\uDD55 \uD83D\uDD61 \uD83D\uDD56 \uD83D\uDD62 \uD83D\uDD57 \uD83D\uDD63 \uD83D\uDD58 \uD83D\uDD64 \uD83D\uDD59 \uD83D\uDD65 \uD83D\uDD5A \uD83D\uDD66 \u2648 \u2649 \u264A \u264B \u264C \u264D \u264E \u264F \u2650 \u2651 \u2652 \u2653 \u26CE \uD83C\uDF11 \uD83C\uDF12 \uD83C\uDF13 \uD83C\uDF14 \uD83C\uDF15 \uD83C\uDF16 \uD83C\uDF17 \uD83C\uDF18 \uD83C\uDF19 \uD83C\uDF1A \uD83C\uDF1B \uD83C\uDF1C \u2600\uFE0F \uD83C\uDF1D \uD83C\uDF1E \u2601\uFE0F \u26C5 \uD83C\uDF00 \uD83C\uDF08 \uD83C\uDF02 \u2614 \u2744\uFE0F \u26C4 \uD83C\uDF1F \uD83C\uDF20 \uD83D\uDD25 \uD83C\uDF83 \uD83C\uDF84 \uD83C\uDF86 \uD83C\uDF87 \u2728 \uD83C\uDF88 \uD83C\uDF89 \uD83C\uDF8A \uD83C\uDF8B \uD83C\uDF8C \uD83C\uDF8D \uD83C\uDF8E \uD83C\uDF8F \uD83C\uDF90 \uD83C\uDF91 \uD83C\uDF93 \uD83C\uDFAF \uD83C\uDFB4 \uD83C\uDF80 \uD83C\uDF81 \uD83C\uDFAB \u26BD \u26BE \uD83C\uDFC0 \uD83C\uDFC8 \uD83C\uDFC9 \uD83C\uDFBE \uD83C\uDFB1 \uD83C\uDFB3 \u26F3 \uD83C\uDFA3 \uD83C\uDFBD \uD83C\uDFBF \uD83C\uDFC2 \uD83C\uDFC4 \uD83C\uDFC7 \uD83C\uDFCA \uD83D\uDEB4 \uD83D\uDEB5 \uD83C\uDFC6 \uD83C\uDFAE \uD83C\uDFB2 \u2660\uFE0F \u2665\uFE0F \u2666\uFE0F \u2663\uFE0F \uD83C\uDCCF \uD83C\uDC04 \uD83D\uDD07 \uD83D\uDD08 \uD83D\uDD09 \uD83D\uDD0A \uD83D\uDCE2 \uD83D\uDCE3 \uD83D\uDCEF \uD83D\uDD14 \uD83D\uDD15 \uD83D\uDD00 \uD83D\uDD01 \uD83D\uDD02 \u25B6\uFE0F \u23E9 \u25C0\uFE0F \u23EA \uD83D\uDD3C \u23EB \uD83D\uDD3D \u23EC \uD83C\uDFBC \uD83C\uDFB5 \uD83C\uDFB6 \uD83C\uDFA4 \uD83C\uDFA7 \uD83C\uDFB7 \uD83C\uDFB8 \uD83C\uDFB9 \uD83C\uDFBA \uD83C\uDFBB \uD83D\uDCFB \uD83D\uDCF1 \uD83D\uDCF3 \uD83D\uDCF4 \uD83D\uDCF2 \uD83D\uDCF5 \u260E\uFE0F \uD83D\uDCDE #\u20E3\uFE0F 0\u20E3\uFE0F 1\u20E3\uFE0F 2\u20E3\uFE0F 3\u20E3\uFE0F 4\u20E3\uFE0F 5\u20E3\uFE0F 6\u20E3\uFE0F 7\u20E3\uFE0F 8\u20E3\uFE0F 9\u20E3\uFE0F \uD83D\uDD1F \uD83D\uDCF6 \uD83D\uDCDF \uD83D\uDCE0 \uD83D\uDD0B \uD83D\uDD0C \uD83D\uDCBB \uD83D\uDCBD \uD83D\uDCBE \uD83D\uDCBF \uD83D\uDCC0 \uD83C\uDFA5 \uD83C\uDFA6 \uD83C\uDFAC \uD83D\uDCFA \uD83D\uDCF7 \uD83D\uDCF9 \uD83D\uDCFC \uD83D\uDD05 \uD83D\uDD06 \uD83D\uDD0D \uD83D\uDD0E \uD83D\uDD2C \uD83D\uDD2D \uD83D\uDCE1 \uD83D\uDCA1 \uD83D\uDD26 \uD83C\uDFEE \uD83D\uDCD4 \uD83D\uDCD5 \uD83D\uDCD6 \uD83D\uDCD7 \uD83D\uDCD8 \uD83D\uDCD9 \uD83D\uDCDA \uD83D\uDCD3 \uD83D\uDCD2 \uD83D\uDCC3 \uD83D\uDCDC \uD83D\uDCC4 \uD83D\uDCF0 \uD83D\uDCD1 \uD83D\uDD16 \uD83D\uDCB0 \uD83D\uDCB4 \uD83D\uDCB5 \uD83D\uDCB6 \uD83D\uDCB7 \uD83D\uDCB8 \uD83D\uDCB1 \uD83D\uDCB2 \uD83D\uDCB3 \uD83D\uDCB9 \u2709\uFE0F \uD83D\uDCE7 \uD83D\uDCE8 \uD83D\uDCE9 \uD83D\uDCE4 \uD83D\uDCE5 \uD83D\uDCE6 \uD83D\uDCEB \uD83D\uDCEA \uD83D\uDCEC \uD83D\uDCED \uD83D\uDCEE \u270F\uFE0F \u2712\uFE0F \uD83D\uDCDD \uD83D\uDCBC \uD83D\uDCC1 \uD83D\uDCC2 \uD83D\uDCC5 \uD83D\uDCC6 \uD83D\uDCC7 \uD83D\uDCC8 \uD83D\uDCC9 \uD83D\uDCCA \uD83D\uDCCB \uD83D\uDCCC \uD83D\uDCCD \uD83D\uDCCE \uD83D\uDCCF \uD83D\uDCD0 \uD83D\uDCDB \u2702\uFE0F \uD83D\uDD12 \uD83D\uDD13 \uD83D\uDD0F \uD83D\uDD10 \uD83D\uDD11 \uD83D\uDD28 \uD83D\uDD27 \uD83D\uDD29 \uD83D\uDD17 \uD83D\uDC89 \uD83D\uDC8A \uD83D\uDD2A \uD83D\uDD2B \uD83D\uDEAC \uD83C\uDFC1 \uD83D\uDEA9 \uD83C\uDDE8\uD83C\uDDF3 \uD83C\uDDEB\uD83C\uDDF7 \uD83C\uDDE9\uD83C\uDDEA \uD83C\uDDEE\uD83C\uDDF9 \uD83C\uDDEF\uD83C\uDDF5 \uD83C\uDDF7\uD83C\uDDFA \uD83C\uDDF0\uD83C\uDDF7 \uD83C\uDDEA\uD83C\uDDF8 \uD83C\uDDEC\uD83C\uDDE7 \uD83C\uDDFA\uD83C\uDDF8 \u2B06\uFE0F \u2197\uFE0F \u27A1\uFE0F \u2198\uFE0F \u2B07\uFE0F \u2199\uFE0F \u2B05\uFE0F \u2196\uFE0F \u2195\uFE0F \u2194\uFE0F \u21A9\uFE0F \u21AA\uFE0F \u2934\uFE0F \u2935\uFE0F \uD83D\uDD03 \uD83D\uDD04 \uD83D\uDD19 \uD83D\uDD1A \uD83D\uDD1B \uD83D\uDD1C \uD83D\uDD1D \uD83D\uDD30 \uD83D\uDD2E \uD83D\uDD2F \u267B\uFE0F \u26A1 \u2B50 \u2B55 \u2705 \u2611\uFE0F \u2714\uFE0F \u2716\uFE0F \u274C \u274E \u2795 \u2796 \u2797 \u27B0 \u27BF \u303D\uFE0F \u2733\uFE0F \u2734\uFE0F \u2747\uFE0F \u203C\uFE0F \u2049\uFE0F \u2753 \u2754 \u2755 \u2757 \u3030\uFE0F \u00A9\uFE0F \u00AE\uFE0F \u2122\uFE0F \uD83D\uDCAF \uD83D\uDD1E \uD83D\uDD20 \uD83D\uDD21 \uD83D\uDD22 \uD83D\uDD23 \uD83D\uDD24 \uD83C\uDD70\uFE0F \uD83C\uDD8E \uD83C\uDD71\uFE0F \uD83C\uDD91 \uD83C\uDD92 \uD83C\uDD93 \u2139\uFE0F \uD83C\uDD94 \u24C2\uFE0F \uD83C\uDD95 \uD83C\uDD96 \uD83C\uDD7E\uFE0F \uD83C\uDD97 \uD83C\uDD7F\uFE0F \uD83C\uDD98 \uD83C\uDD99 \uD83C\uDD9A \uD83C\uDE01 \uD83C\uDE02\uFE0F \uD83C\uDE37\uFE0F \uD83C\uDE36 \uD83C\uDE2F \uD83C\uDE50 \uD83C\uDE39 \uD83C\uDE1A \uD83C\uDE32 \uD83C\uDE51 \uD83C\uDE38 \uD83C\uDE34 \uD83C\uDE33 \u3297\uFE0F \u3299\uFE0F \uD83C\uDE3A \uD83C\uDE35 \u25AA\uFE0F \u25AB\uFE0F \u25FB\uFE0F \u25FC\uFE0F \u25FD \u25FE \u2B1B \u2B1C \uD83D\uDD36 \uD83D\uDD37 \uD83D\uDD38 \uD83D\uDD39 \uD83D\uDD3A \uD83D\uDD3B \uD83D\uDCA0 \uD83D\uDD18 \uD83D\uDD32 \uD83D\uDD33 \u26AA \u26AB \uD83D\uDD34 \uD83D\uDD35 \uE50A \uD83C\uDDE6 \uD83C\uDDE7 \uD83C\uDDE8 \uD83C\uDDE9 \uD83C\uDDEA \uD83C\uDDEB \uD83C\uDDEC \uD83C\uDDED \uD83C\uDDEE \uD83C\uDDEF \uD83C\uDDF0 \uD83C\uDDF1 \uD83C\uDDF2 \uD83C\uDDF3 \uD83C\uDDF4 \uD83C\uDDF5 \uD83C\uDDF6 \uD83C\uDDF7 \uD83C\uDDF8 \uD83C\uDDF9 \uD83C\uDDFA \uD83C\uDDFB \uD83C\uDDFC \uD83C\uDDFD \uD83C\uDDFE \uD83C\uDDFF'
-  },
-  
-  script = document.createElement('SCRIPT');
-  script.type = 'text/javascript';
-  script.src = 'http://twemoji.maxcdn.com/twemoji.min.js';
-  
-  document.getElementsByTagName('HEAD')[0].appendChild(script);
-  document.write('<style type="text/css">.sceditor-button-twemoji div{background:url(http://twemoji.maxcdn.com/16x16/1f600.png)!important}.sceditor-twemoji{width:220px;height:250px;overflow-y:auto}.sceditor-twemoji img{cursor:pointer;padding:3px}.sceditor-twemoji img:hover{opacity:.7}</style>');
-  
-  $(function(){
-    if ($.sceditor) {
-      
-      // create sceditor button and drop down
-      $.sceditor.command.set('twemoji', {
-        dropDown : function(editor, caller, callback) {
-          
-          if (!fa_twemoji.element) {
-            fa_twemoji.element = document.createElement('DIV');
-            fa_twemoji.element.innerHTML = twemoji.parse(fa_twemoji.emoji_list, {
-              size : fa_twemoji.emoji_size,
-              attributes : function() {
-                return {
-                  style : 'display:none;'
-                };
-              }
-            }).replace(/\s(?=<|$)/g, '');
-            
-            // load handler for images to lighten the deployment of emoji
-            // it displays and loads one image at a time rather all at once which can make the browser unresponsive
-            if (fa_twemoji.async_load) {
-              fa_twemoji.image = {
-                collection : $('img', fa_twemoji.element),
-                index : 0,
-                timeout : [0, 6000], // timeout after 6000 attempts on 1 image
-              
-                load : window.setInterval(function() {
-                  if (fa_twemoji.image.collection[fa_twemoji.image.index].complete) {
-                    fa_twemoji.image.index++;
-                  
-                    if (fa_twemoji.image.collection[fa_twemoji.image.index]) {
-                      fa_twemoji.image.collection[fa_twemoji.image.index].style.display = '';
-                      fa_twemoji.image.timeout[0] = 0;
-                    } else {
-                      window.clearInterval(fa_twemoji.image.load);
-                      fa_twemoji.image.load = 'COMPLETE';
-                    }
-                  
-                  } else if (++fa_twemoji.image.timeout[0] > fa_twemoji.image.timeout[1]) {
-                    window.clearInterval(fa_twemoji.image.load);
-                    fa_twemoji.image.load = 'ERROR';
-                  }
-                }, 10)
+jQuery(function ($) {
+
+    'use strict';
+
+    if (!$.sceditor) {
+        return;
+    }
+
+
+    // https://twitter.github.io/twemoji/preview.html
+
+    // var emoji = document.getElementsByClassName('emoji'),
+    //     list = '';
+    // for (var i = 0; i < emoji.length; i++) {
+    //     list += ' ' + emoji[i].src.match(/([^\/]+)\.png$/)[1];
+    // };
+    // console.log(list);
+
+    // 872 emoji
+
+
+    var button_title = 'Emojis',
+        emoji_size = 16, // 16, 36, or 72
+        emoji_list = '1f600 1f601 1f602 1f603 1f604 1f605 1f606 1f607 1f608 1f609 1f60a 1f60b 1f60c 1f60d 1f60e 1f60f 1f610 1f611 1f612 1f613 1f614 1f615 1f616 1f617 1f618 1f619 1f61a 1f61b 1f61c 1f61d 1f61e 1f61f 1f620 1f621 1f622 1f623 1f624 1f625 1f626 1f627 1f628 1f629 1f62a 1f62b 1f62c 1f62d 1f62e 1f62f 1f630 1f631 1f632 1f633 1f634 1f635 1f636 1f637 263a 1f638 1f639 1f63a 1f63b 1f63c 1f63d 1f63e 1f63f 1f640 1f645 1f646 1f647 1f648 1f649 1f64a 1f64b 1f64c 1f64d 1f64e 1f64f 1f300 1f301 1f302 1f303 1f304 1f305 1f306 1f307 1f308 1f309 1f30a 1f30b 1f30c 1f30d 1f30e 1f30f 1f310 1f311 1f312 1f313 1f314 1f315 1f316 1f317 1f318 1f319 1f31a 1f31b 1f31c 1f31d 1f31e 1f31f 1f320 1f330 1f331 1f332 1f333 1f334 1f335 1f337 1f338 1f339 1f33a 1f33b 1f33c 1f33d 1f33e 1f33f 1f340 1f341 1f342 1f343 1f344 1f345 1f346 1f347 1f348 1f349 1f34a 1f34b 1f34c 1f34d 1f34e 1f34f 1f350 1f351 1f352 1f353 1f354 1f355 1f356 1f357 1f358 1f359 1f35a 1f35b 1f35c 1f35d 1f35e 1f35f 1f360 1f361 1f362 1f363 1f364 1f365 1f366 1f367 1f368 1f369 1f36a 1f36b 1f36c 1f36d 1f36e 1f36f 1f370 1f371 1f372 1f373 1f374 1f375 1f376 1f377 1f378 1f379 1f37a 1f37b 1f37c 1f380 1f381 1f382 1f383 1f384 1f385 1f386 1f387 1f388 1f389 1f38a 1f38b 1f38c 1f38d 1f38e 1f38f 1f390 1f391 1f392 1f393 1f3a0 1f3a1 1f3a2 1f3a3 1f3a4 1f3a5 1f3a6 1f3a7 1f3a8 1f3a9 1f3aa 1f3ab 1f3ac 1f3ad 1f3ae 1f3af 1f3b0 1f3b1 1f3b2 1f3b3 1f3b4 1f3b5 1f3b6 1f3b7 1f3b8 1f3b9 1f3ba 1f3bb 1f3bc 1f3bd 1f3be 1f3bf 1f3c0 1f3c1 1f3c2 1f3c3 1f3c4 1f3c6 1f3c7 1f3c8 1f3c9 1f3ca 1f3e0 1f3e1 1f3e2 1f3e3 1f3e4 1f3e5 1f3e6 1f3e7 1f3e8 1f3e9 1f3ea 1f3eb 1f3ec 1f3ed 1f3ee 1f3ef 1f3f0 1f400 1f401 1f402 1f403 1f404 1f405 1f406 1f407 1f408 1f409 1f40a 1f40b 1f40c 1f40d 1f40e 1f40f 1f410 1f411 1f412 1f413 1f414 1f415 1f416 1f417 1f418 1f419 1f41a 1f41b 1f41c 1f41d 1f41e 1f41f 1f420 1f421 1f422 1f423 1f424 1f425 1f426 1f427 1f428 1f429 1f42a 1f42b 1f42c 1f42d 1f42e 1f42f 1f430 1f431 1f432 1f433 1f434 1f435 1f436 1f437 1f438 1f439 1f43a 1f43b 1f43c 1f43d 1f43e 1f440 1f442 1f443 1f444 1f445 1f446 1f447 1f448 1f449 1f44a 1f44b 1f44c 1f44d 1f44e 1f44f 1f450 1f451 1f452 1f453 1f454 1f455 1f456 1f457 1f458 1f459 1f45a 1f45b 1f45c 1f45d 1f45e 1f45f 1f460 1f461 1f462 1f463 1f464 1f465 1f466 1f467 1f468 1f469 1f46a 1f46b 1f46c 1f46d 1f46e 1f46f 1f470 1f471 1f472 1f473 1f474 1f475 1f476 1f477 1f478 1f479 1f47a 1f47b 1f47c 1f47d 1f47e 1f47f 1f480 1f481 1f482 1f483 1f484 1f485 1f486 1f487 1f488 1f489 1f48a 1f48b 1f48c 1f48d 1f48e 1f48f 1f490 1f491 1f492 1f493 1f494 1f495 1f496 1f497 1f498 1f499 1f49a 1f49b 1f49c 1f49d 1f49e 1f49f 1f4a0 1f4a1 1f4a2 1f4a3 1f4a4 1f4a5 1f4a6 1f4a7 1f4a8 1f4a9 1f4aa 1f4ab 1f4ac 1f4ad 1f4ae 1f4af 1f4b0 1f4b1 1f4b2 1f4b3 1f4b4 1f4b5 1f4b6 1f4b7 1f4b8 1f4b9 1f4ba 1f4bb 1f4bc 1f4bd 1f4be 1f4bf 1f4c0 1f4c1 1f4c2 1f4c3 1f4c4 1f4c5 1f4c6 1f4c7 1f4c8 1f4c9 1f4ca 1f4cb 1f4cc 1f4cd 1f4ce 1f4cf 1f4d0 1f4d1 1f4d2 1f4d3 1f4d4 1f4d5 1f4d6 1f4d7 1f4d8 1f4d9 1f4da 1f4db 1f4dc 1f4dd 1f4de 1f4df 1f4e0 1f4e1 1f4e2 1f4e3 1f4e4 1f4e5 1f4e6 1f4e7 1f4e8 1f4e9 1f4ea 1f4eb 1f4ec 1f4ed 1f4ee 1f4ef 1f4f0 1f4f1 1f4f2 1f4f3 1f4f4 1f4f5 1f4f6 1f4f7 1f4f9 1f4fa 1f4fb 1f4fc 1f500 1f501 1f502 1f503 1f504 1f505 1f506 1f507 1f508 1f509 1f50a 1f50b 1f50c 1f50d 1f50e 1f50f 1f510 1f511 1f512 1f513 1f514 1f515 1f516 1f517 1f518 1f519 1f51a 1f51b 1f51c 1f51d 1f51e 1f51f 1f520 1f521 1f522 1f523 1f524 1f525 1f526 1f527 1f528 1f529 1f52a 1f52b 1f52c 1f52d 1f52e 1f52f 1f530 1f531 1f532 1f533 1f534 1f535 1f536 1f537 1f538 1f539 1f53a 1f53b 1f53c 1f53d 1f550 1f551 1f552 1f553 1f554 1f555 1f556 1f557 1f558 1f559 1f55a 1f55b 1f55c 1f55d 1f55e 1f55f 1f560 1f561 1f562 1f563 1f564 1f565 1f566 1f567 1f5fb 1f5fc 1f5fd 1f5fe 1f5ff 1f680 1f681 1f682 1f683 1f684 1f685 1f686 1f687 1f688 1f689 1f68a 1f68b 1f68c 1f68d 1f68e 1f68f 1f690 1f691 1f692 1f693 1f694 1f695 1f696 1f697 1f698 1f699 1f69a 1f69b 1f69c 1f69d 1f69e 1f69f 1f6a0 1f6a1 1f6a2 1f6a3 1f6a4 1f6a5 1f6a6 1f6a7 1f6a8 1f6a9 1f6aa 1f6ab 1f6ac 1f6ad 1f6ae 1f6af 1f6b0 1f6b1 1f6b2 1f6b3 1f6b4 1f6b5 1f6b6 1f6b7 1f6b8 1f6b9 1f6ba 1f6bb 1f6bc 1f6bd 1f6be 1f6bf 1f6c0 1f6c1 1f6c2 1f6c3 1f6c4 1f6c5 203c 2049 2122 2139 2194 2195 2196 2197 2198 2199 21a9 21aa 23-20e3 231a 231b 23e9 23ea 23eb 23ec 23f0 23f3 24c2 25aa 25ab 25b6 25c0 25fb 25fc 25fd 25fe 2600 2601 260e 2611 2614 2615 261d 2648 2649 264a 264b 264c 264d 264e 264f 2650 2651 2652 2653 2660 2663 2665 2666 2668 267b 267f 2693 26a0 26a1 26aa 26ab 26bd 26be 26c4 26c5 26ce 26d4 26ea 26f2 26f3 26f5 26fa 26fd 2702 2705 2708 2709 270a 270b 270c 270f 2712 2714 2716 2728 2733 2734 2744 2747 274c 274e 2753 2754 2755 2757 2764 2795 2796 2797 27a1 27b0 27bf 2934 2935 2b05 2b06 2b07 2b1b 2b1c 2b50 2b55 30-20e3 3030 303d 31-20e3 32-20e3 3297 3299 33-20e3 34-20e3 35-20e3 36-20e3 37-20e3 38-20e3 39-20e3 a9 ae e50a 1f004 1f0cf 1f170 1f171 1f17e 1f17f 1f18e 1f191 1f192 1f193 1f194 1f195 1f196 1f197 1f198 1f199 1f19a 1f1e6 1f1e7 1f1e8-1f1f3 1f1e8 1f1e9-1f1ea 1f1e9 1f1ea-1f1f8 1f1ea 1f1eb-1f1f7 1f1eb 1f1ec-1f1e7 1f1ec 1f1ed 1f1ee-1f1f9 1f1ee 1f1ef-1f1f5 1f1ef 1f1f0-1f1f7 1f1f0 1f1f1 1f1f2 1f1f3 1f1f4 1f1f5 1f1f6 1f1f7-1f1fa 1f1f7 1f1f8 1f1f9 1f1fa-1f1f8 1f1fa 1f1fb 1f1fc 1f1fd 1f1fe 1f1ff 1f201 1f202 1f21a 1f22f 1f232 1f233 1f234 1f235 1f236 1f237 1f238 1f239 1f23a 1f250 1f251'.split(' '),
+
+
+        listLength = emoji_list.length,
+        index = 0,
+        disable = false,
+        $win = $(window),
+        addResizeEvent;
+
+    function createList($wrap) {
+        disable = true;
+
+        var stop = index + 100;
+
+        if (stop > listLength) {
+            stop = listLength;
+        }
+
+        for (index; index < stop; index++) {
+            var element = emoji_list[index],
+                $item = $('<img>', {
+                    'class': 'emoji',
+                    alt: element,
+                    src: 'http://twemoji.maxcdn.com/' + emoji_size + 'x' + emoji_size + '/' + element + '.png'
+                });
+            $item.appendTo($wrap);
+        }
+
+        index = stop;
+        disable = false;
+    }
+
+    function updatePosition($wrap, caller) {
+        var callerLeft = caller.offset().left,
+            winWidth = $win.width(),
+            customStyle = {
+                top: caller.offset().top,
+                marginTop: caller.outerHeight()
             };
-            
-            fa_twemoji.image.collection[fa_twemoji.image.index].style.display = ''; // start loading
+
+        if (callerLeft + 260 > winWidth) {
+            customStyle.left = 'auto';
+            customStyle.right = 0;
+        } else {
+            customStyle.left = callerLeft;
+            customStyle.right = 'auto';
+        }
+        $wrap.css(customStyle);
+    }
+
+    $('head').append($('<style>', {
+        text: '.sceditor-button-twemoji div{background:url(http://twemoji.maxcdn.com/16x16/1f600.png)!important}.sceditor-twemoji{width:260px;height:250px;overflow-y:auto}.sceditor-twemoji img{cursor:pointer;margin:7px;width:16px;height:16px;overflow:hidden;text-indent:-99px}.sceditor-twemoji img:hover{opacity:.7}'
+    }));
+
+    // create sceditor button and drop down
+    $.sceditor.command.set('twemoji', {
+        emoji: function (editor, caller, callback) {
+
+            var $wrap = $('.sceditor-twemoji'),
+                closeDropDown = editor.closeDropDown;
+
+            if (!$wrap.length) {
+
+                closeDropDown();
+                editor.closeDropDown = function() {
+                    closeDropDown.apply(closeDropDown, arguments);
+                    if ($wrap.is(":visible")) {
+                        $wrap.hide();
+                    }
+                };
+
+                $wrap = $('<div>', {
+                    'class': 'sceditor-dropdown sceditor-twemoji'
+                }).click(function (e) {
+                    e.stopPropagation();
+                });
+                $wrap.appendTo('body');
+
+                createList($wrap);
+                $wrap.scrollTop(0);
+
+                $wrap.on('click', '.emoji', function (e) {
+                    callback(this.src);
+                    if (!e.ctrlKey) {
+                        $wrap.hide();
+                    }
+                });
+
+                $wrap.scroll(function () {
+                    if (disable) {
+                        return false;
+                    }
+                    if (index >= emoji_list.length) {
+                        return false;
+                    }
+                    if ($wrap.scrollTop() + 250 + 50 < $wrap[0].scrollHeight) {
+                        return false;
+                    }
+                    createList($wrap);
+                });
+
             } else {
-              $('img', fa_twemoji.element).show();
+
+                if ($wrap.is(":hidden")) {
+                    editor.closeDropDown();
+                    $wrap.show();
+                } else {
+                    editor.closeDropDown();
+                }
+
             }
-          }
-          
-          $(fa_twemoji.element).click(function(e) {
-            var target = e.target;
-            if (target.tagName == 'IMG') {
-              callback(target.src);
-              fa_twemoji.auto_close && editor.closeDropDown(true);
+
+            updatePosition($wrap, caller);
+            if (!addResizeEvent) {
+                addResizeEvent = true;
+                $win.resize(function () {
+                    updatePosition($wrap, caller);
+                });
             }
-          });
-          
-          editor.createDropDown(caller, 'twemoji', fa_twemoji.element);
+
         },
 
         // wysiwyg
-        exec : function(c) {
-          var e = this;
-          $.sceditor.command.get('twemoji').dropDown(e, c, function(icon) {
-            e.insert('&nbsp;[img]' + icon + '[/img]&nbsp;', '', true, true, true);
-          });
+        exec: function (caller) {
+            var editor = this;
+            $.sceditor.command.get('twemoji').emoji(editor, caller, function (icon) {
+                editor.insert('&nbsp;[img]' + icon + '[/img]&nbsp;', '', true, true, true);
+            });
         },
-    
+
         // source
-        txtExec : function(c) {
-          var e = this;
-          $.sceditor.command.get('twemoji').dropDown(e, c, function(icon) {
-            e.insert(' [img]' + icon + '[/img] ', '', true, true, true);
-          });
+        txtExec: function (caller) {
+            var editor = this;
+            $.sceditor.command.get('twemoji').emoji(editor, caller, function (icon) {
+                editor.insert(' [img]' + icon + '[/img] ', '', true, true, true);
+            });
         },
-    
-        tooltip : fa_twemoji.button_title
-      });
-  
-      toolbar = toolbar.replace(/date,/,'twemoji,date,'); // add the button to the toolbar
-    }
-  });
-  
-  if (!window.fa_twemoji) {
-    window.fa_twemoji = config;
-  }
-}());
+
+        tooltip: button_title
+    });
+
+    toolbar = toolbar.replace(/date,/, 'twemoji,date,'); // add the button to the toolbar
+
+});
