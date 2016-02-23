@@ -28,8 +28,7 @@ jQuery(function ($) {
         index = 0,
         disable = false,
         $win = $(window),
-        addResizeEvent,
-        addClickOut;
+        addResizeEvent;
 
     function createList($wrap) {
         disable = true;
@@ -139,15 +138,6 @@ jQuery(function ($) {
                 addResizeEvent = true;
                 $win.resize(function () {
                     updatePosition($wrap, caller);
-                });
-            }
-
-            if (!addClickOut) {
-                addClickOut = true;
-                $('html').click(function () {
-                    if ($wrap.is(":visible")) {
-                        $wrap.hide();
-                    }
                 });
             }
 
